@@ -16,7 +16,7 @@
                                <p class="lead">
                                    Asked By
                                <a href="{{ $question->user->url }}">{{$question->user->name}}</a>
-                               <small class="text-muted">{{ $question->created_dated }}</small>
+                               <small class="text-muted">{{ $question->created_date }}</small>
                                </p>
                                    {{$question->title}}
                                </h3>
