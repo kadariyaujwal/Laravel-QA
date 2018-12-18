@@ -21,7 +21,7 @@
                             <label for="question-title">
                                 Question Title
                             </label>
-                            <input type="text" name="title" class="form-control {{$errors->has('title')?'is-invalid':''}} " required>
+                            <input type="text" name="title" value=" {{old('title')}} " class="form-control {{$errors->has('title')?'is-invalid':''}} " required>
                             @if($errors->has('title'))
                                 <div class="invalid-feedback">
                                     <strong>
@@ -34,7 +34,7 @@
                         <div class="form-group">
 
                             <label for="question-body">Describe your question</label>
-                            <textarea name="body" id="question-body" class="form-control {{$errors->has('body')?'is-invalid':''}} " cols="30" rows="10"></textarea>
+                            <textarea name="body" id="question-body" class="form-control {{$errors->has('body')?'is-invalid':''}} " cols="30" rows="10"> {{ old('body')}} </textarea>
                             @if($errors->has('body'))
                                 <div class="invalid-feedback">
                                     <strong>
