@@ -20,9 +20,6 @@ class CreateAnswersTable extends Migration
             $table->text('body');
             $table->integer('votes_count')->default(0);
             $table->timestamps();
-
-            $table->foreign('question_id')->references('id')->on('questions');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
