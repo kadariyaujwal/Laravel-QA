@@ -22,7 +22,6 @@ class QuestionController extends Controller
 
         return view('questions.index')->withQuestions($questions);
    
-        
     }
 
     /**
