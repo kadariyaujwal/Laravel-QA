@@ -16,6 +16,7 @@ class AnswersController extends Controller
      */
     public function store(Question $question, Request $request)
     {
+        abort_unless(\Auth::user(),403,"You must login to answer the question");
         $request->validate([
             'body'=>'required'
         ]);
