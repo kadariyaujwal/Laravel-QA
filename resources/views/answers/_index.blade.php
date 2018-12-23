@@ -11,13 +11,23 @@
                 @foreach($answers as $answer)
                 <div class="media">
                     <div class=" flex-cloumn vote-controls">
-                        <a title="this question is useful " class="vote-up">
+                        <a title="this answer is useful " class="vote-up {{Auth::guest()?'off':''}}" onclick="event.preventDefault(); document.getElementById('vote-up-answer-{{$answer->id}}').submit()">
                             <i class="fas fa-caret-up fa-3x"></i>
                         </a>
-                        <span class="vote-count">8</span>
-                        <a title="this is non-useful question" class="vote-down off">
+                        <form action='/answers/{{$answer->id}}/vote' id="vote-up-answer-{{$answer->id}}"
+                            method="post" style="display:none;">
+                            @csrf
+                            <input type="hidden" name="vote" value="1">
+                        </form>
+                        <span class="vote-count">{{$answer->votes_count}}</span>
+                        <a title="this is non-useful answer" class="vote-down {{Auth::guest()?'off':''}}"  onclick="event.preventDefault(); document.getElementById('vote-down-answer-{{$answer->id}}').submit()">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </a>
+                        <form action='/answers/{{$answer->id}}/vote' id="vote-down-answer-{{$answer->id}}"
+                            method="post" style="display:none;">
+                            @csrf
+                            <input type="hidden" name="vote" value="-1">
+                        </form>
                         @can('accept', $answer)
                             <a title="mark this answer as best answer" class=" {{ $answer->status }} mt-2" onclick="event.preventDefault(); document.getElementById('accept-answer-{{$answer->id}}').submit()">
                                 <i class=" fas fa-check fa-2x"></i>
