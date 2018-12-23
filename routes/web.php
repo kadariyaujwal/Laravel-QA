@@ -29,3 +29,4 @@ Route::delete('/questions/{question}/answers/{answer}','AnswersController@destro
 Route::post('/answers/{answer}/accept','AcceptAnswerController')->name('answers.accept');
 Route::post('/questions/{question}/favourites','FavouritesController@store')->name('questions.favourite');
 Route::delete('/questions/{question}/favourites','FavouritesController@destroy')->name('questions.favourite');
+Route::post('/questions/{question}/vote', 'VoteQuestionController');
