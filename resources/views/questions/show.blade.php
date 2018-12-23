@@ -16,7 +16,6 @@
                 <div class="media mb-3">
                    @include('shared._vote',[
                        'model'=>$question,
-
                    ])
                     <div class="media-body">
                         {!! $question->body_html !!}

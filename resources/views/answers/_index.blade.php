@@ -10,26 +10,11 @@
 
                 @foreach($answers as $answer)
                 <div class="media">
-                    <div class=" flex-cloumn vote-controls">
-                        <a title="this answer is useful " class="vote-up {{Auth::guest()?'off':''}}" onclick="event.preventDefault(); document.getElementById('vote-up-answer-{{$answer->id}}').submit()">
-                            <i class="fas fa-caret-up fa-3x"></i>
-                        </a>
-                        <form action='/answers/{{$answer->id}}/vote' id="vote-up-answer-{{$answer->id}}"
-                            method="post" style="display:none;">
-                            @csrf
-                            <input type="hidden" name="vote" value="1">
-                        </form>
-                        <span class="vote-count">{{$answer->votes_count}}</span>
-                        <a title="this is non-useful answer" class="vote-down {{Auth::guest()?'off':''}}"  onclick="event.preventDefault(); document.getElementById('vote-down-answer-{{$answer->id}}').submit()">
-                            <i class="fas fa-caret-down fa-3x"></i>
-                        </a>
-                        <form action='/answers/{{$answer->id}}/vote' id="vote-down-answer-{{$answer->id}}"
-                            method="post" style="display:none;">
-                            @csrf
-                            <input type="hidden" name="vote" value="-1">
-                        </form>
-                      @include('shared._vote ')
-                    </div>
+                   
+                      @include('shared._vote ',[
+                          'model'=>$answer
+                      ])
+                    
                     <div class="media-body">
                         {!! $answer->body_html !!}
                         <div class="row">
